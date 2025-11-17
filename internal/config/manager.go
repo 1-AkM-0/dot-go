@@ -1,16 +1,11 @@
 package config
 
-import (
-	"fmt"
-	"os"
-)
+import "fmt"
 
-func AddFile(filePath string) error {
-	fullpath := "~/.config/" + filePath
-	fmt.Println(fullpath)
-	if _, err := os.Stat(fullpath); os.IsNotExist(err) {
-		return fmt.Errorf("file not found :%s", filePath)
+func (c *Config) Add(dotFile DotFile) error {
+	if _, exists := c.DotFiles[dotFile.name]; exists {
+		return fmt.Errorf("%s dotfile already exists", dotFile.name)
 	}
-	fmt.Printf("File added: %s", filePath)
+	c.DotFiles[dotFile.name] = dotFile
 	return nil
 }
