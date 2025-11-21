@@ -33,7 +33,6 @@ var addCmd = &cobra.Command{
 
 		dotFile := config.DotFile{
 			Name:         name,
-			Id:           0,
 			TargetPath:   targetPath,
 			Source:       sourcePath,
 			AddedAt:      time.Now(),
