@@ -8,17 +8,17 @@ func TestAdd(t *testing.T) {
 	t.Run("must fail adding the same dotfile", func(t *testing.T) {
 		c := NewConfig()
 		dotfile1 := DotFile{
-			name:       "nvim",
-			id:         1,
-			source:     "$HOME/.config/dotgo",
-			targetPath: "$HOME/.config/",
+			Name:       "nvim",
+			Id:         1,
+			Source:     "$HOME/.config/dotgo",
+			TargetPath: "$HOME/.config/",
 		}
 
 		dotfile2 := DotFile{
-			name:       "nvim",
-			id:         2,
-			source:     "$HOME/.config/dotgo",
-			targetPath: "$HOME/.config/",
+			Name:       "nvim",
+			Id:         2,
+			Source:     "$HOME/.config/dotgo",
+			TargetPath: "$HOME/.config/",
 		}
 
 		if err := c.Add(dotfile1); err != nil {
@@ -31,16 +31,16 @@ func TestAdd(t *testing.T) {
 	t.Run("must add a dotfile", func(t *testing.T) {
 		c := NewConfig()
 		dotfile := DotFile{
-			name:       "nvim",
-			id:         1,
-			source:     "$HOME/.config/dotgo",
-			targetPath: "$HOME/.config/",
+			Name:       "nvim",
+			Id:         1,
+			Source:     "$HOME/.config/dotgo",
+			TargetPath: "$HOME/.config/",
 		}
 
 		if err := c.Add(dotfile); err != nil {
 			t.Errorf("Add() fail, return a unexpected error %v", err)
 		}
-		if _, exists := c.DotFiles[dotfile.name]; !exists {
+		if _, exists := c.DotFiles[dotfile.Name]; !exists {
 			t.Errorf("Add() fail, dotfile nvim was not added")
 		}
 	})
