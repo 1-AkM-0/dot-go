@@ -9,14 +9,12 @@ func TestAdd(t *testing.T) {
 		c := NewConfig()
 		dotfile1 := DotFile{
 			Name:       "nvim",
-			Id:         1,
 			Source:     "$HOME/.config/dotgo",
 			TargetPath: "$HOME/.config/",
 		}
 
 		dotfile2 := DotFile{
 			Name:       "nvim",
-			Id:         2,
 			Source:     "$HOME/.config/dotgo",
 			TargetPath: "$HOME/.config/",
 		}
@@ -32,7 +30,6 @@ func TestAdd(t *testing.T) {
 		c := NewConfig()
 		dotfile := DotFile{
 			Name:       "nvim",
-			Id:         1,
 			Source:     "$HOME/.config/dotgo",
 			TargetPath: "$HOME/.config/",
 		}

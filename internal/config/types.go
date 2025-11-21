@@ -3,7 +3,6 @@ package config
 import "time"
 
 type DotFile struct {
-	Id           int       `json:"id"`
 	Name         string    `json:"name"`
 	Source       string    `json:"source"`
 	TargetPath   string    `json:"target_path"`
