@@ -3,12 +3,12 @@ package config
 import "time"
 
 type DotFile struct {
-	id           int       `json:"id"`
-	name         string    `json:"name"`
-	source       string    `json:"source"`
-	targetPath   string    `json:"target_path"`
-	addedAt      time.Time `json:"added_at"`
-	lastModified time.Time `json:"last_modified"`
+	Id           int       `json:"id"`
+	Name         string    `json:"name"`
+	Source       string    `json:"source"`
+	TargetPath   string    `json:"target_path"`
+	AddedAt      time.Time `json:"added_at"`
+	LastModified time.Time `json:"last_modified"`
 }
 
 type Config struct {
