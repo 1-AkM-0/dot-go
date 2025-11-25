@@ -12,6 +12,7 @@ type DotFile struct {
 
 type Config struct {
 	DotFiles map[string]DotFile `json:"dotfiles"`
+	FilePath string             `json:"-"`
 }
 
 func NewConfig() *Config {

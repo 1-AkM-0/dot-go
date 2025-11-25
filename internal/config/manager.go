@@ -27,7 +27,9 @@ func Load() (*Config, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return NewConfig(), nil
+			cfg := NewConfig()
+			cfg.FilePath = path
+			return cfg, nil
 		}
 		return nil, err
 	}
@@ -37,18 +39,17 @@ func Load() (*Config, error) {
 		return nil, err
 	}
 
+	cfg.FilePath = path
+
 	return cfg, err
 }
 
 func (c *Config) Save() error {
-	home, err := os.UserConfigDir()
-	if err != nil {
-		return err
+	if c.FilePath == "" {
+		return fmt.Errorf("filepath not defined")
 	}
 
-	path := filepath.Join(home, "dot-go", "config.json")
-
-	dir := filepath.Dir(path)
+	dir := filepath.Dir(c.FilePath)
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
@@ -58,5 +59,5 @@ func (c *Config) Save() error {
 		return err
 	}
 
-	return os.WriteFile(path, data, 0o644)
+	return os.WriteFile(c.FilePath, data, 0o644)
 }
