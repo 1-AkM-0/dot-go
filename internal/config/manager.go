@@ -16,6 +16,14 @@ func (c *Config) Add(dotFile DotFile) error {
 	return c.Save()
 }
 
+func (c *Config) Delete(name string) error {
+	if _, exists := c.DotFiles[name]; !exists {
+		return fmt.Errorf("%s dotfile not exists", name)
+	}
+	delete(c.DotFiles, name)
+	return c.Save()
+}
+
 func Load() (*Config, error) {
 	home, err := os.UserConfigDir()
 	if err != nil {
