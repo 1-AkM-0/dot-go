@@ -16,6 +16,7 @@ var listCmd = &cobra.Command{
 	Args:  cobra.MinimumNArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		c, err := config.Load()
+		m.Out = cmd.OutOrStdout()
 		if err != nil {
 			log.Fatal("Error loading JSON config")
 		}
